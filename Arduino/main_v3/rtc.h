@@ -18,6 +18,7 @@ class RTC
         bool alarm_triggered();
         DateTime now();
         byte hours();
+        byte hour_12();
         byte minutes();
         void set_time(byte h, byte m);
         void set_alarm(byte h, byte m);

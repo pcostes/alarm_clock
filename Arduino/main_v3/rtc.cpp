@@ -70,6 +70,15 @@ byte RTC::hours()
     return rtc.now().hour();
 }
 
+byte RTC::hour_12()
+{
+  byte hr = rtc.now().hour();
+  if (hr == 0)
+    return 12;
+  if (hr > 12)
+    return hr - 12;
+  return hr;
+}
 byte RTC::minutes()
 {
     return rtc.now().minute();

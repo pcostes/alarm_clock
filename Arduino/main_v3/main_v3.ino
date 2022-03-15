@@ -1,4 +1,4 @@
-// Main Code v2 for Clock, Peter Costescu
+// Main Code v3 for Clock, Peter Costescu
 
 #include <EEPROM.h>
 #include "display.h"
@@ -70,7 +70,7 @@ void loop ()
       }
       else
       {
-          disp.set_data_time(current.hour(), current.minute());
+          disp.set_data_time(rtc.hour_12(), current.minute());
 
       }
       prev_millis = millis();
@@ -83,7 +83,7 @@ void loop ()
     if (rtc.alarm_triggered())
     {
       // set a new alarm, preserve hour, minute, second from eeprom, increment day. 
-      disp.set_data_time(rtc.now().hour(), rtc.now().minute());
+      disp.set_data_time(rtc.hour_12(), rtc.minutes());
       Helpers::blink_reps(200, 10);
       rtc.clear();
       //rtc.set_time(1, 5);
